@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style>
+            body{
+                text-align:center;
+            }
+            h1{
+                color:turquoise;
+            }
+            div{
+                padding: 5px;
+                background: white;
+                border-radius: 5px;
+                height: auto;
+                width: auto;
+                margin: auto;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Random Quote Generator</h1>
+        <div>
+            <p id="abc"></p>
+            <p id="author"></p>
+        <button onclick="rqg()">Generate Quote</button>
+        </div>
+        <script>
+            async function rqg(){
+                var data = await fetch("https://api.quotable.io/quotes/random")
+                var cdata = await data.json()
+                document.getElementById("abc").innerHTML = cdata[0].content
+                console.log(cdata[0].content)
+                document.getElementById("author").innerHTML = cdata[0].author
+            }
+        </script>
+    </body>
+</html>
